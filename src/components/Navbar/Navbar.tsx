@@ -26,9 +26,14 @@ export default function Navbar({ width }: { width?: number }) {
       borderColor={"#ccc"}
     >
       <Box p={2} display={"flex"} alignItems={"center"} gap={2}>
-        <img src="/logo.png" alt="" width={50} />
+        <img
+          src="/logo.jpeg"
+          alt=""
+          width={50}
+          style={{ borderRadius: "50%" }}
+        />
         <Typography variant="h6" fontWeight={600} color={"primary.main"}>
-          PakZameen
+          UC-2 (JI)
         </Typography>
       </Box>
       <Box>

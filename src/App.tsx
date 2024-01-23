@@ -11,7 +11,7 @@ import "./App.css";
 
 function App() {
   useEffect(() => {
-    document.title = "KDA Portal";
+    document.title = "UC-2 (JI)";
   }, []);
 
   const routes = useRoutes([
