@@ -1,7 +1,7 @@
 import { ComplaintStatus, Complaint as ComplaintE } from "../enums";
 
 export interface Column {
-  id: "id" | "date" | "type" | "block" | "address";
+  id: "id" | "date" | "type" | "block" | "address" | "status";
   label: string;
   minWidth?: number;
   align?: "right" | "center" | "left";
@@ -14,6 +14,7 @@ export interface Data {
   type: string;
   block: string;
   address: string;
+  status: string;
 }
 
 export interface Complaint {

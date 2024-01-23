@@ -29,6 +29,10 @@ export const COLUMNS: Column[] = [
     label: "Complaint Type",
   },
   {
+    id: "status",
+    label: "Complaint Status",
+  },
+  {
     id: "block",
     label: "Block",
   },
