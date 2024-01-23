@@ -2,7 +2,7 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { User } from "../../types/user";
 import dayjs from "dayjs";
-import { Gender, MaritalStatus, RoleType } from "../../enums";
+import { Gender, RoleType } from "../../enums";
 import { registerThunk } from "../../features/auth/authSlice";
 import { useAppDispatch } from "../../config/store";
 import { useNavigate } from "react-router-dom";
@@ -13,28 +13,24 @@ interface SignUpFromData extends User {
 }
 
 const initialData: SignUpFromData = {
-  city: "Karachi",
-  cnicExpiry: dayjs().add(1, "day"),
-  cnicFather: "",
-  cnicHusband: "",
+  city: "",
   cnicNumber: "",
   currentAddress: "",
   dateOfBirth: dayjs(),
   email: "",
   gender: Gender.Male,
-  imageSrc: "",
-  isAlive: true,
-  maritalStatus: MaritalStatus.Single,
   name: "",
-  organizationCode: RoleType.DCO,
+  role: RoleType.DCO,
   password: "",
   permanentAddress: "",
   phoneNumber: "",
-  postalCode: "",
-  workEmail: "",
   state: "",
-  workPassword: "",
   confirmPassword: "",
+  jwt: {
+    expireTime: "",
+    jwtToken: "",
+    refreshToken: "",
+  },
 };
 
 export default function SignUp() {

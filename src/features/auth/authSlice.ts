@@ -50,8 +50,8 @@ export const registerThunk = createAsyncThunk(
   async (user: User) => {
     const modifiedUser: User = {
       ...user,
-      workEmail: user.email,
-      workPassword: user.password,
+      email: user.email,
+      password: user.password,
     };
     const result = await register(modifiedUser);
     return result;

@@ -2,7 +2,7 @@ import { api } from "../config/axios";
 import { RoleType } from "../enums";
 import { JWT, User } from "../types/user";
 
-const authRoute = "Auth";
+const authRoute = "auth";
 
 export const login = async (cnic: string, password: string) => {
   const { data } = await api.post<any>(`/${authRoute}/login`, {
