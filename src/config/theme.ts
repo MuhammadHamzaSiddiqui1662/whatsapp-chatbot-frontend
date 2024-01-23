@@ -2,7 +2,7 @@ import { createTheme, ThemeOptions, Shadows } from "@mui/material";
 const defaultTheme = createTheme();
 const defaultShadows: ThemeOptions["shadows"] = [...defaultTheme.shadows];
 
-export const primaryMain = "rgb(144, 194, 37)";
+export const primaryMain = "#19499D";
 export const primaryLight = "#2a9ef7";
 export const primaryContrastText = "#ffffff";
 export const secondaryMain = "#f2f2f2";
