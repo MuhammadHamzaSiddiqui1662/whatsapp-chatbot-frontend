@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "../features/auth/authSlice";
+import complaintSlice from "../features/complaint/complaintSlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import logger from "redux-logger";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
+    complaint: complaintSlice,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
   devTools: true,

@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import VerifyOtp from "./pages/VerifyOtp/VerifyOtp";
 import "./App.css";
+import Complaints from "./pages/Complaints/Complaints";
 
 function App() {
   useEffect(() => {
@@ -42,6 +43,10 @@ function App() {
         {
           path: ROUTES.profile,
           element: <Profile />,
+        },
+        {
+          path: ROUTES.complaints,
+          element: <Complaints />,
         },
       ],
     },

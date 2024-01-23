@@ -48,6 +48,16 @@ export default function Navbar({ width }: { width?: number }) {
               </ListItemButton>
             </NavLink>
           </ListItem>
+          <ListItem>
+            <NavLink to={ROUTES.complaints} className={"nav-link"}>
+              <ListItemButton>
+                <ListItemIcon>
+                  <GridViewIcon />
+                </ListItemIcon>
+                <ListItemText>Complaints</ListItemText>
+              </ListItemButton>
+            </NavLink>
+          </ListItem>
           <ListSubheader>Auth</ListSubheader>
           <ListItem>
             <NavLink to={ROUTES.profile} className={"nav-link"}>
