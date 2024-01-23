@@ -10,7 +10,7 @@ import { getComplaintsThunk } from "../../features/complaint/complaintSlice";
 
 export default function Complaints() {
   const navigate = useNavigate();
-  const data = useAppSelector((state) => state.complaint.complaints);
+  const complaints = useAppSelector((state) => state.complaint.complaints);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Complaints() {
       <Typography variant="h4">Complaints</Typography>
       <StickyHeadTable
         columns={COLUMNS}
-        rows={formatRows(data || [])}
+        rows={formatRows(complaints || [])}
         onRowClick={handleRowClick}
         sx={{
           mt: 5,
