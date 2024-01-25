@@ -9,6 +9,7 @@ export const store = configureStore({
     auth: authSlice,
     complaint: complaintSlice,
   },
+  // @ts-ignore
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
   devTools: true,
 });

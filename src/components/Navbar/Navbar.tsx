@@ -60,7 +60,7 @@ export default function Navbar({
       </Box>
       <Box>
         <List component={"nav"}>
-          <ListItem>
+          <ListItem onClick={onClose}>
             <NavLink to={ROUTES.dashboard} className={"nav-link"}>
               <ListItemButton>
                 <ListItemIcon>
@@ -71,7 +71,7 @@ export default function Navbar({
             </NavLink>
           </ListItem>
           <ListSubheader>Complaints</ListSubheader>
-          <ListItem>
+          <ListItem onClick={onClose}>
             <NavLink
               to={`${ROUTES.complaints}/${ROUTES.pending}`}
               className={`nav-link${
@@ -89,7 +89,7 @@ export default function Navbar({
               </ListItemButton>
             </NavLink>
           </ListItem>
-          <ListItem>
+          <ListItem onClick={onClose}>
             <NavLink
               to={`${ROUTES.complaints}/${ROUTES.inProgress}`}
               className={`nav-link${
@@ -107,7 +107,7 @@ export default function Navbar({
               </ListItemButton>
             </NavLink>
           </ListItem>
-          <ListItem>
+          <ListItem onClick={onClose}>
             <NavLink
               to={`${ROUTES.complaints}/${ROUTES.completed}`}
               className={`nav-link${
@@ -125,7 +125,7 @@ export default function Navbar({
               </ListItemButton>
             </NavLink>
           </ListItem>
-          <ListItem>
+          <ListItem onClick={onClose}>
             <NavLink
               to={`${ROUTES.complaints}/${ROUTES.archived}`}
               className={`nav-link${
@@ -144,7 +144,7 @@ export default function Navbar({
             </NavLink>
           </ListItem>
           <ListSubheader>Auth</ListSubheader>
-          <ListItem>
+          <ListItem onClick={onClose}>
             <NavLink to={ROUTES.profile} className={"nav-link"}>
               <ListItemButton>
                 <ListItemIcon>
@@ -154,7 +154,7 @@ export default function Navbar({
               </ListItemButton>
             </NavLink>
           </ListItem>
-          <ListItem>
+          <ListItem onClick={onClose}>
             <NavLink to={ROUTES.signIn} className={"nav-link"}>
               <ListItemButton>
                 <ListItemIcon>
