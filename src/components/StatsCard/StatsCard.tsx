@@ -1,14 +1,17 @@
 import { Box, BoxProps, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 interface Props extends BoxProps {
   variant: "outlined" | "contained";
   title: string;
   value: string;
+  to?: string;
 }
 
 export default function StatsCard({ variant, title, value, ...props }: Props) {
   return (
     <Box
+      component={props.to ? Link : undefined}
       display={"flex"}
       flexDirection={"column"}
       gap={8}
@@ -21,6 +24,8 @@ export default function StatsCard({ variant, title, value, ...props }: Props) {
       {...props}
       sx={{
         ...props.sx,
+        textDecoration: "none",
+        cursor: "pointer",
       }}
     >
       <Typography variant="h4">{title}</Typography>

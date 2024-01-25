@@ -2,6 +2,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import StatsCard from "../../components/StatsCard/StatsCard";
 import { useAppSelector } from "../../config/store";
 import { ComplaintStatus } from "../../enums";
+import { ROUTES } from "../../config/constants";
 
 export default function Dashboard() {
   const complaints = useAppSelector((state) => state.complaint.complaints);
@@ -11,6 +12,7 @@ export default function Dashboard() {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <StatsCard
+            to={`/${ROUTES.complaints}/${ROUTES.pending}`}
             title="Pending"
             value={complaints
               .filter(
@@ -22,6 +24,7 @@ export default function Dashboard() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <StatsCard
+            to={`/${ROUTES.complaints}/${ROUTES.inProgress}`}
             title="In Progress"
             value={complaints
               .filter(
@@ -33,6 +36,7 @@ export default function Dashboard() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <StatsCard
+            to={`/${ROUTES.complaints}/${ROUTES.completed}`}
             title="Completed"
             value={complaints
               .filter(
@@ -44,6 +48,7 @@ export default function Dashboard() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <StatsCard
+            to={`/${ROUTES.complaints}/${ROUTES.archived}`}
             title="Archived"
             value={complaints
               .filter(
