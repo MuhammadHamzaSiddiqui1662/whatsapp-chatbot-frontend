@@ -1,4 +1,4 @@
-import { Complaint, ComplaintStatus } from "../enums";
+import { Complaint } from "../enums";
 import { Data, Complaint as ComplaintI } from "../types/complaint";
 
 export const formatRows = (complaints: ComplaintI[]): Data[] =>
@@ -12,16 +12,6 @@ export const formatRows = (complaints: ComplaintI[]): Data[] =>
         ? "Street Light"
         : complaint.type === Complaint.Sanitation
         ? "Sanitation"
-        : "undefined",
-    status:
-      complaint.status === ComplaintStatus.Pending
-        ? "Pending"
-        : complaint.status === ComplaintStatus.InProgress
-        ? "In Progress"
-        : complaint.status === ComplaintStatus.Completed
-        ? "Completed"
-        : complaint.status === ComplaintStatus.Archived
-        ? "Archived"
         : "undefined",
     block: complaint.block,
     address: complaint.house,

@@ -8,13 +8,17 @@ import {
   ListSubheader,
   Typography,
 } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import { ROUTES } from "../../config/constants";
+import { NavLink, useSearchParams } from "react-router-dom";
+import { ROUTES, SEARCH_PARAMS } from "../../config/constants";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import GridViewIcon from "@mui/icons-material/GridView";
 import LogoutIcon from "@mui/icons-material/Logout";
+import DownloadingIcon from "@mui/icons-material/Downloading";
+import AutoModeIcon from "@mui/icons-material/AutoMode";
 
 export default function Navbar({ width }: { width?: number }) {
+  let [searchParams] = useSearchParams();
+
   return (
     <Box
       display={"flex"}
@@ -48,13 +52,76 @@ export default function Navbar({ width }: { width?: number }) {
               </ListItemButton>
             </NavLink>
           </ListItem>
+          <ListSubheader>Complaints</ListSubheader>
           <ListItem>
-            <NavLink to={ROUTES.complaints} className={"nav-link"}>
+            <NavLink
+              to={`${ROUTES.complaints}/${ROUTES.pending}`}
+              className={`nav-link${
+                searchParams.get(SEARCH_PARAMS.status) &&
+                searchParams.get(SEARCH_PARAMS.status) === ROUTES.pending
+                  ? " active"
+                  : ""
+              }`}
+            >
               <ListItemButton>
                 <ListItemIcon>
-                  <GridViewIcon />
+                  <DownloadingIcon />
                 </ListItemIcon>
-                <ListItemText>Complaints</ListItemText>
+                <ListItemText>Pending</ListItemText>
+              </ListItemButton>
+            </NavLink>
+          </ListItem>
+          <ListItem>
+            <NavLink
+              to={`${ROUTES.complaints}/${ROUTES.inProgress}`}
+              className={`nav-link${
+                searchParams.get(SEARCH_PARAMS.status) &&
+                searchParams.get(SEARCH_PARAMS.status) === ROUTES.inProgress
+                  ? " active"
+                  : ""
+              }`}
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <AutoModeIcon />
+                </ListItemIcon>
+                <ListItemText>In Progress</ListItemText>
+              </ListItemButton>
+            </NavLink>
+          </ListItem>
+          <ListItem>
+            <NavLink
+              to={`${ROUTES.complaints}/${ROUTES.completed}`}
+              className={`nav-link${
+                searchParams.get(SEARCH_PARAMS.status) &&
+                searchParams.get(SEARCH_PARAMS.status) === ROUTES.completed
+                  ? " active"
+                  : ""
+              }`}
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <DownloadingIcon />
+                </ListItemIcon>
+                <ListItemText>Completed</ListItemText>
+              </ListItemButton>
+            </NavLink>
+          </ListItem>
+          <ListItem>
+            <NavLink
+              to={`${ROUTES.complaints}/${ROUTES.archived}`}
+              className={`nav-link${
+                searchParams.get(SEARCH_PARAMS.status) &&
+                searchParams.get(SEARCH_PARAMS.status) === ROUTES.archived
+                  ? " active"
+                  : ""
+              }`}
+            >
+              <ListItemButton>
+                <ListItemIcon>
+                  <DownloadingIcon />
+                </ListItemIcon>
+                <ListItemText>Archived</ListItemText>
               </ListItemButton>
             </NavLink>
           </ListItem>

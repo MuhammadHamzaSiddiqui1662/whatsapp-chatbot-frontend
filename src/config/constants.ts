@@ -8,6 +8,11 @@ export const ROUTES = {
   verifyOtp: "verify-otp",
   profile: "profile",
   complaints: "complaints",
+  pending: "pending",
+  inProgress: "in-progress",
+  completed: "completed",
+  archived: "archived",
+  complaintId: ":complaintId",
 };
 
 export const SEARCH_PARAMS = {
@@ -27,10 +32,6 @@ export const COLUMNS: Column[] = [
   {
     id: "type",
     label: "Complaint Type",
-  },
-  {
-    id: "status",
-    label: "Complaint Status",
   },
   {
     id: "block",

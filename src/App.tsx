@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useRoutes } from "react-router-dom";
+import { Outlet, useRoutes } from "react-router-dom";
 import { ROUTES } from "./config/constants";
 import Body from "./Body";
 import Profile from "./pages/Profile/Profile";
@@ -9,6 +9,10 @@ import SignUp from "./pages/SignUp/SignUp";
 import VerifyOtp from "./pages/VerifyOtp/VerifyOtp";
 import "./App.css";
 import Complaints from "./pages/Complaints/Complaints";
+import PendingComplaints from "./pages/Complaints/Pending/Pending";
+import InProgressComplaints from "./pages/Complaints/InProgress/InProgress";
+import CompletedComplaints from "./pages/Complaints/Completed/Completed";
+import ArchivedComplaints from "./pages/Complaints/Archived/Archived";
 
 function App() {
   useEffect(() => {
@@ -46,7 +50,29 @@ function App() {
         },
         {
           path: ROUTES.complaints,
-          element: <Complaints />,
+          element: <Outlet />,
+          children: [
+            {
+              path: ROUTES.complaintId,
+              element: <Complaints />,
+            },
+            {
+              path: ROUTES.pending,
+              element: <PendingComplaints />,
+            },
+            {
+              path: ROUTES.inProgress,
+              element: <InProgressComplaints />,
+            },
+            {
+              path: ROUTES.completed,
+              element: <CompletedComplaints />,
+            },
+            {
+              path: ROUTES.archived,
+              element: <ArchivedComplaints />,
+            },
+          ],
         },
       ],
     },
