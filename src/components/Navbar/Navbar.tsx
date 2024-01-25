@@ -16,7 +16,17 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import DownloadingIcon from "@mui/icons-material/Downloading";
 import AutoModeIcon from "@mui/icons-material/AutoMode";
 
-export default function Navbar({ width }: { width?: number }) {
+export default function Navbar({
+  width,
+  isMobile,
+  isOpen,
+  onClose,
+}: {
+  width?: number;
+  isMobile: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   let [searchParams] = useSearchParams();
 
   return (
@@ -28,6 +38,14 @@ export default function Navbar({ width }: { width?: number }) {
       height={"100%"}
       borderRight={1}
       borderColor={"#ccc"}
+      position={isMobile ? "absolute" : undefined}
+      left={isOpen ? 0 : "-100%"}
+      bgcolor={"#fff"}
+      zIndex={100}
+      onClick={(e) => e.stopPropagation()}
+      sx={{
+        transition: "0.3s all linear",
+      }}
     >
       <Box p={2} display={"flex"} alignItems={"center"} gap={2}>
         <img
