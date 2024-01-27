@@ -6,8 +6,12 @@ import {
   getComplaintsThunk,
   updateComplaintStatusThunk,
 } from "../../features/complaint/complaintSlice";
-import { ComplaintType, ComplaintStatus } from "../../enums";
-import { Block } from "../../types/complaint";
+import { ComplaintStatus } from "../../enums";
+import {
+  getBlockTitle,
+  getComplaintStatusTitle,
+  getComplaintTypeTitle,
+} from "../../utils";
 
 export default function Complaints() {
   const { complaintId } = useParams();
@@ -58,18 +62,20 @@ export default function Complaints() {
         <Box display={"flex"} gap={1}>
           <Typography>Type:</Typography>
           <Typography fontWeight={600}>
-            {ComplaintType[complaint?.type!]}
+            {getComplaintTypeTitle(complaint?.type!)}
           </Typography>
         </Box>
         <Box display={"flex"} gap={1}>
           <Typography>Status:</Typography>
           <Typography fontWeight={600}>
-            {ComplaintStatus[complaint?.status!]}
+            {getComplaintStatusTitle(complaint?.status!)}
           </Typography>
         </Box>
         <Box display={"flex"} gap={1}>
           <Typography>Block:</Typography>
-          <Typography fontWeight={600}>{Block[complaint?.block!]}</Typography>
+          <Typography fontWeight={600}>
+            {getBlockTitle(complaint?.block!)}
+          </Typography>
         </Box>
         <Box display={"flex"} gap={1}>
           <Typography>Address:</Typography>

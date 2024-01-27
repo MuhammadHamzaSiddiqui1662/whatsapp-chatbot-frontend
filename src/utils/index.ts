@@ -1,16 +1,16 @@
-import { ComplaintType } from "../enums";
+import { ComplaintStatus, ComplaintType } from "../enums";
 import { Data, Complaint as ComplaintI, Block } from "../types/complaint";
 
 export const formatRows = (complaints: ComplaintI[]): Data[] =>
   complaints.map((complaint) => ({
     id: complaint.id,
     date: new Date(complaint.date).toLocaleString(),
-    type: getComplaintTitle(complaint.type),
+    type: getComplaintTypeTitle(complaint.type),
     block: getBlockTitle(complaint.block),
     address: complaint.house,
   }));
 
-const getBlockTitle = (blockCode: Block) =>
+export const getBlockTitle = (blockCode: Block) =>
   blockCode == Block.Block13
     ? "Block 13"
     : blockCode == Block.Block17
@@ -19,7 +19,7 @@ const getBlockTitle = (blockCode: Block) =>
     ? "Block 18"
     : blockCode;
 
-const getComplaintTitle = (complaintCode: ComplaintType) =>
+export const getComplaintTypeTitle = (complaintCode: ComplaintType) =>
   complaintCode == ComplaintType.Sewerage
     ? "Sewerage"
     : complaintCode == ComplaintType.StreetLight
@@ -27,3 +27,14 @@ const getComplaintTitle = (complaintCode: ComplaintType) =>
     : complaintCode == ComplaintType.Sanitation
     ? "Sanitation"
     : complaintCode;
+
+export const getComplaintStatusTitle = (complaintStatusCode: ComplaintStatus) =>
+  complaintStatusCode == ComplaintStatus.Pending
+    ? "Pending"
+    : complaintStatusCode == ComplaintStatus.InProgress
+    ? "In Progress"
+    : complaintStatusCode == ComplaintStatus.Completed
+    ? "Completed"
+    : complaintStatusCode == ComplaintStatus.Archived
+    ? "Archived"
+    : complaintStatusCode;
