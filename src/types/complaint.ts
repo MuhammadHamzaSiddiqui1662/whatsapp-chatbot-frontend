@@ -1,4 +1,4 @@
-import { ComplaintStatus, Complaint as ComplaintE } from "../enums";
+import { ComplaintStatus, ComplaintType as ComplaintE } from "../enums";
 
 export interface Column {
   id: "id" | "date" | "type" | "block" | "address";
@@ -9,7 +9,7 @@ export interface Column {
 }
 
 export interface Data {
-  id: string;
+  id: number;
   date: string;
   type: string;
   block: string;
@@ -18,9 +18,16 @@ export interface Data {
 
 export interface Complaint {
   _id: string;
+  id: number;
   type: ComplaintE;
-  block: string;
+  block: Block;
   house: string;
   status: ComplaintStatus;
   date: Date;
+}
+
+export enum Block {
+  Block13,
+  Block17,
+  Block18,
 }

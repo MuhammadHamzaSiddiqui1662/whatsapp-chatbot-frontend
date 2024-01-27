@@ -6,13 +6,14 @@ import {
   getComplaintsThunk,
   updateComplaintStatusThunk,
 } from "../../features/complaint/complaintSlice";
-import { Complaint, ComplaintStatus } from "../../enums";
+import { ComplaintType, ComplaintStatus } from "../../enums";
+import { Block } from "../../types/complaint";
 
 export default function Complaints() {
   const { complaintId } = useParams();
   const complaint = useAppSelector((state) =>
     state.complaint.complaints.find(
-      (complaint) => complaint._id.toString() === complaintId
+      (complaint) => complaint.id.toString() === complaintId
     )
   );
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ export default function Complaints() {
       })
     );
   }, [complaint]);
+  console.log(complaint);
 
   return (
     <Box p={4} display={"flex"} flexDirection={"column"} gap={2}>
@@ -51,12 +53,12 @@ export default function Complaints() {
       >
         <Box display={"flex"} gap={1}>
           <Typography>Complaint no:</Typography>
-          <Typography fontWeight={600}>{complaint?._id}</Typography>
+          <Typography fontWeight={600}>{complaint?.id}</Typography>
         </Box>
         <Box display={"flex"} gap={1}>
           <Typography>Type:</Typography>
           <Typography fontWeight={600}>
-            {Complaint[complaint?.type!]}
+            {ComplaintType[complaint?.type!]}
           </Typography>
         </Box>
         <Box display={"flex"} gap={1}>
@@ -67,7 +69,7 @@ export default function Complaints() {
         </Box>
         <Box display={"flex"} gap={1}>
           <Typography>Block:</Typography>
-          <Typography fontWeight={600}>{complaint?.block}</Typography>
+          <Typography fontWeight={600}>{Block[complaint?.block!]}</Typography>
         </Box>
         <Box display={"flex"} gap={1}>
           <Typography>Address:</Typography>
