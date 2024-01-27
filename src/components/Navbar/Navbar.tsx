@@ -10,9 +10,9 @@ import {
 } from "@mui/material";
 import { NavLink, useSearchParams } from "react-router-dom";
 import { ROUTES, SEARCH_PARAMS } from "../../config/constants";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+// import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import GridViewIcon from "@mui/icons-material/GridView";
-import LogoutIcon from "@mui/icons-material/Logout";
+// import LogoutIcon from "@mui/icons-material/Logout";
 import DownloadingIcon from "@mui/icons-material/Downloading";
 import AutoModeIcon from "@mui/icons-material/AutoMode";
 
@@ -143,7 +143,7 @@ export default function Navbar({
               </ListItemButton>
             </NavLink>
           </ListItem>
-          <ListSubheader>Auth</ListSubheader>
+          {/* <ListSubheader>Auth</ListSubheader>
           <ListItem onClick={onClose}>
             <NavLink to={ROUTES.profile} className={"nav-link"}>
               <ListItemButton>
@@ -163,7 +163,7 @@ export default function Navbar({
                 <ListItemText>Sign Out</ListItemText>
               </ListItemButton>
             </NavLink>
-          </ListItem>
+          </ListItem> */}
         </List>
       </Box>
     </Box>
