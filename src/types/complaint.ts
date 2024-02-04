@@ -24,6 +24,7 @@ export interface Complaint {
   house: string;
   status: ComplaintStatus;
   date: Date;
+  complainantId: string;
 }
 
 export enum Block {

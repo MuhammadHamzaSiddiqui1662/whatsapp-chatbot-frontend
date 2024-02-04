@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../config/store";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   getComplaintsThunk,
   updateComplaintStatusThunk,
@@ -12,9 +12,12 @@ import {
   getComplaintStatusTitle,
   getComplaintTypeTitle,
 } from "../../utils";
+import { getComplainant } from "../../services/complaints";
+import { Complainant } from "../../types/user";
 
 export default function Complaints() {
   const { complaintId } = useParams();
+  const [complainant, setComplainant] = useState<Complainant | null>(null);
   const complaint = useAppSelector((state) =>
     state.complaint.complaints.find(
       (complaint) => complaint.id.toString() === complaintId
@@ -25,6 +28,14 @@ export default function Complaints() {
   useEffect(() => {
     dispatch(getComplaintsThunk());
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      const temp = await getComplainant(complaint?.complainantId!);
+      setComplainant(temp);
+      console.log(temp);
+    })();
+  }, [complaint]);
 
   const handleClick = useCallback(() => {
     dispatch(
@@ -41,7 +52,6 @@ export default function Complaints() {
       })
     );
   }, [complaint]);
-  console.log(complaint);
 
   return (
     <Box p={4} display={"flex"} flexDirection={"column"} gap={2}>
@@ -72,6 +82,10 @@ export default function Complaints() {
           </Typography>
         </Box>
         <Box display={"flex"} gap={1}>
+          <Typography>Phone Number:</Typography>
+          <Typography fontWeight={600}>{complainant?.mobile!}</Typography>
+        </Box>
+        <Box display={"flex"} gap={1}>
           <Typography>Block:</Typography>
           <Typography fontWeight={600}>
             {getBlockTitle(complaint?.block!)}
@@ -86,6 +100,10 @@ export default function Complaints() {
           <Typography fontWeight={600}>
             {new Date(complaint?.date!).toLocaleString()}
           </Typography>
+        </Box>
+        <Box display={"flex"} gap={1}>
+          <Typography>Name:</Typography>
+          <Typography fontWeight={600}>{complainant?.name!}</Typography>
         </Box>
         <Button variant="contained" onClick={handleClick}>
           Mark as{" "}
